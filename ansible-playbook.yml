@@ -1,0 +1,51 @@
+
+---
+
+- name: "Build container with ansible"
+
+  hosts: localhost
+
+  tasks:
+
+  - name: stop running container
+
+    command: docker stop --name anaibia/cv-kadhem-img
+
+    ignore_errors: yes
+
+
+  - name: remove stopped container
+
+    command: docker rm anaibia/cv-kadhem-img
+
+    ignore_errors: yes
+
+  
+
+  - name: remove used image
+
+    command: docker rmi anaibia/cv-kam-img
+    
+    ignore_errors: yes
+  
+
+
+  - name: build docker image from dockerfile
+
+    command: docker build -t cv-img .   
+
+
+  - name: create tag to image
+    
+    command: docker tag cv-img anaibia/cv-kadhem-img
+
+
+
+  - name: push image to dockerhub
+ 
+    command: docker push anaibia/cv-kadhem-img
+
+
+  - name: run container from image
+    
+    command: sudo docker run -d -t -p 8094:443 anaibia/cv-kadhem-img
