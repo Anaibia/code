@@ -41,4 +41,4 @@
 
   - name: run container from image
     
-    command: sudo docker run -d --name anaibia-container -p 8094:80 anaibia-img
+    command:docker run -d --name anaibia-container -p 8094:80 anaibia-img
