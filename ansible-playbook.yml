@@ -23,7 +23,7 @@
 
   - name: remove used image
 
-    command: docker rmi anaibia-img
+    command: docker rmi kadhem-img
     
     ignore_errors: yes
   
