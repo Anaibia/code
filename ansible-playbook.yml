@@ -39,6 +39,4 @@
     command: docker tag cv-img kadhem-img
 
 
-  - name: run container from image
-    
-    command:docker run -d --name anaibia-container -p 8094:80 anaibia-img
+ 
