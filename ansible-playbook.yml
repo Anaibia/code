@@ -9,14 +9,13 @@
 
   - name: stop running container
 
-    command: docker stop --name anaibia/cv-kadhem-img
-
+    command: docker stop anaibia-container
     ignore_errors: yes
 
 
   - name: remove stopped container
 
-    command: docker rm anaibia/cv-kadhem-img
+    command: docker rm anaibia-container
 
     ignore_errors: yes
 
@@ -24,7 +23,7 @@
 
   - name: remove used image
 
-    command: docker rmi anaibia/cv-kam-img
+    command: docker rmi anaibia-img
     
     ignore_errors: yes
   
@@ -37,15 +36,9 @@
 
   - name: create tag to image
     
-    command: docker tag cv-img anaibia/cv-kadhem-img
-
-
-
-  - name: push image to dockerhub
- 
-    command: docker push anaibia/cv-kadhem-img
+    command: docker tag cv-img kadhem-img
 
 
   - name: run container from image
     
-    command: sudo docker run -d -t -p 8094:443 anaibia/cv-kadhem-img
+    command: sudo docker run -d --name anaibia-container -p 8094:80 anaibia-img
